@@ -5,7 +5,7 @@ import user from '../controllers/user.js';
 const router = express.Router();
 
 router
-  .get('/:publicKey', user.onGetUser)
+  .get('/:publicKey?', user.onGetUser)
   
 
 export default router;

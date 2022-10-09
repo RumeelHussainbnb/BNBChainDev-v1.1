@@ -13,7 +13,7 @@ export default {
     onPatchTweet: async (req, res) => {
         try{
             const updateAllTweets = await Tweet.updateMany({}, {"Pinned": 0})
-            const tweets = await Tweet.findOneAndUpdate({id: req.query.tweetID}, {"Pinned": 1});
+            const tweets = await Tweet.findOneAndUpdate({id: req.params.tweetID}, {"Pinned": 1});
             res.status(200).json(tweets)
         } catch(error){
             res.status(400).json({success: false});
