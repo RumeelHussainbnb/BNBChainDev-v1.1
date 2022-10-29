@@ -13,9 +13,10 @@ import playlistRouter from "./routes/playlist.js";
 import userRouter from "./routes/user.js";
 import tweetRouter from "./routes/tweet.js";
 import contentRouter from "./routes/content.js";
+import dotenv from 'dotenv';
 
 const app = express();
-
+dotenv.config();
 
 /** Get port from environment and store in Express. */
 const port = process.env.PORT || "3001";

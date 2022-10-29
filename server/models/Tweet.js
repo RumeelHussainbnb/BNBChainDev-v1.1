@@ -8,8 +8,7 @@ const TweetSchema = new mongoose.Schema({
         maxlength: [100, 'PK cannot be more than 100 characters']
     },
     Media:{
-        type: String,
-        maxlength: [200, 'Media name cannot be more than 200 characters']
+        type: Object
     },
     ReferencedTweet:{
         type: Array
@@ -20,7 +19,7 @@ const TweetSchema = new mongoose.Schema({
     text:{
         type: String,
         trim: true,
-        maxlength: [100, 'text cannot be more than 100 characters']
+        maxlength: [5000, 'text cannot be more than 5000 characters']
     },
     id:{
         type: String,
