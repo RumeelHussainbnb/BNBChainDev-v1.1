@@ -223,8 +223,7 @@ export default {
                             ContentType: "newsletters",
                             ContentMarkdown: data.ContentMarkdown,
                             Description: data.Description,
-                            Img: data.Img,
-                            CreatedBy: data.CreatedBy,
+                            Img: data.Img
                         });
                         res.status(201).json({success: true, data: content})
                     }catch(error){
