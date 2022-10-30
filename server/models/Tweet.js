@@ -48,7 +48,7 @@ const TweetSchema = new mongoose.Schema({
         type: Date,
         require: false
     },    
-    CreatedAt:{
+    created_at:{
         type: Date,
         default: Date.now,
         require: true,

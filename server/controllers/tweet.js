@@ -91,7 +91,8 @@ export default {
                     attachments: tweet.attachments,
                     Author: response?.includes?.users[0],
                     Media: response?.includes?.media? response.includes.media[0]: null,
-                    Pinned: 0
+                    Pinned: 0,
+                    created_at: tweet.created_at
                 });
                 res.status(200).json(create_tweet);
             }
