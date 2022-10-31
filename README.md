@@ -6,7 +6,7 @@ First, run the development server:
 
 ```bash
 npm clean --install
-npm run dev
+npm run start
 ```
 
 ## Learn More
