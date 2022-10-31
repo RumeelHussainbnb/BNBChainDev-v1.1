@@ -7,8 +7,6 @@ First, run the development server:
 ```bash
 npm clean --install
 npm run dev
-# or
-yarn dev
 ```
 
 ## Learn More
