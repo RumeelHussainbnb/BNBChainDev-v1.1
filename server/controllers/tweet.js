@@ -32,7 +32,6 @@ export default {
         try{
             
             const client = new Client(process.env.BEARER_TOKEN);
-
             const response = await client.tweets.findTweetById(req.body.id, {
                 "tweet.fields": [
                     "attachments",
@@ -94,7 +93,7 @@ export default {
                     Pinned: 0,
                     created_at: tweet.created_at
                 });
-                res.status(200).json(create_tweet);
+                res.status(201).json({success: true});
             }
 
         } catch(error){

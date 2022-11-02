@@ -17,7 +17,7 @@ const ContentSchema = new mongoose.Schema({
         type: String,
         unique: true,
         required: [true, 'SK add a SK'],
-        maxlength: [40, 'SK cannot be more than 40 characters']
+        maxlength: [200, 'SK cannot be more than 200 characters']
     },
     Description:{
         type: String,

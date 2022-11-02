@@ -11,7 +11,6 @@ export default {
     onFindOneAndUpdateUser: async (req, res) => {
         try{
             const data = JSON.parse(JSON.stringify(req.body));
-            console.log("data",data);
             const username = data.Username
     
             const token = jwt.sign({

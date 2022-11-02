@@ -5,7 +5,7 @@ import calculatePositionNo from "../utils/calculate-position-no.js";
 import ContentType from "../models/ContentTypes.js";
 import tags from "../utils/tags.js";
 import SelectedTags from "../utils/selected-tags.js";
-import validateToken from "../utils/validate-token.js";
+import validateKey from "../utils/validate-key.js";
 import ContentTypes from '../utils/content-types.js';
 
 export default {
@@ -41,7 +41,6 @@ export default {
 
             res.status(201).json({success: true, data: content})
         }catch(error){
-            console.log("error", error);
             res.status(400).json({success: false, error: error});
         }
     },
@@ -207,31 +206,31 @@ export default {
         }
     },
     onPostContentBnbNewsletters: async (req, res) => {
-        const token = req.headers['authorization']
-                const isTokenValid = await validateToken(token)
-                const position = await calculatePositionNo("newsletters")
-                if(isTokenValid === true){
-                    try{
-                        const data = req.body
-                        const content = await Content.create({
-                            Title: data.Title,
-                            Url: process.env.HOME_URL + '/newsletters/' + data.Title.replaceAll(' ', '-'),
-                            SK: data.Title.replaceAll(' ', '-'),
-                            Author: data.Author,
-                            Position: position,
-                            ContentStatus: "active",
-                            ContentType: "newsletters",
-                            ContentMarkdown: data.ContentMarkdown,
-                            Description: data.Description,
-                            Img: data.Img
-                        });
-                        res.status(201).json({success: true, data: content})
-                    }catch(error){
-                        res.status(400).json({success: false, error: error});
-                    }
-                }
-                else{
-                    res.status(403).json({success: false, data: "You do not have permission to add newsletter"})
-                }
+        const key = req.headers['authorization']
+        const isAdmin = await validateKey(key)
+        const position = await calculatePositionNo("newsletters")
+        if(isAdmin === true){
+            try{
+                const data = req.body
+                const content = await Content.create({
+                    Title: data.Title,
+                    Url: process.env.HOME_URL + '/newsletters/' + data.Title.replaceAll(' ', '-'),
+                    SK: data.Title.replaceAll(' ', '-'),
+                    Author: data.Author,
+                    Position: position,
+                    ContentStatus: "active",
+                    ContentType: "newsletters",
+                    ContentMarkdown: data.ContentMarkdown,
+                    Description: data.Description,
+                    Img: data.Img
+                });
+                res.status(201).json({success: true, data: content})
+            }catch(error){
+                res.status(400).json({success: false, error: error});
+            }
+        }
+        else{
+            res.status(403).json({success: false, data: "You do not have permission to add newsletter"})
+        }
     },
 }

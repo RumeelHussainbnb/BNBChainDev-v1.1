@@ -1,6 +1,6 @@
 // models
 import Playlist from '../models/Playlist.js';
-import validateToken from '../utils/validate-token.js';
+import validateToken from '../utils/validate-key.js';
 
 export default {
     onGetPlaylist: async (req, res) => {
