@@ -22,7 +22,7 @@ export default {
     },
     onGetTweetOverPK: async (req, res) => {
         try{
-            const tweets = await Tweet.find({"PK": req.params.listID});
+            const tweets = await Tweet.find({"PK": req.params.listID}).sort({created_at: -1});
             res.status(200).json(tweets)
         } catch(error){
             res.status(400).json({success: false});
