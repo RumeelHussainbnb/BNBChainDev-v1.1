@@ -29,7 +29,7 @@ const ContentSchema = new mongoose.Schema({
         type: String,
         require: true,
         trim: true,
-        maxlength: [5000,'ContentMarkdown cannot be more than 5000 characters']
+        maxlength: [20000,'ContentMarkdown cannot be more than 20000 characters']
     },
     ContentType:{
         type: String,
